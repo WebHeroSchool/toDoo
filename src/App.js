@@ -1,7 +1,7 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
-
+import *as nums from "./components/Numbers"
 
 const name = "sergey";
 const isOpen = true;
@@ -11,15 +11,7 @@ function App() {
       <header className="App-header" style={{background: "grey"}}>
         <img src={logo} className="App-logo" alt="logo" />
         <p>Привет {name}</p>
-        <p>{123}</p>
-        <p>{123+124}</p>
-        <p>{123+124}</p>
-       <p>{123>124}</p>
-       <p>{isOpen ? "открыто":"закрыто"}</p>
-       <p>{null}</p>
-       <p>{undefined}</p>
-       <p>{false}</p>
-       <p>{true}</p>
+          <p>{nums.count} {"*"} {nums.lenght} {"="} {nums.count * nums.lenght}</p>
       </header>
     </div>
   );
