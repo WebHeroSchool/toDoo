@@ -1,5 +1,7 @@
 import React, {Component} from 'react';
 
+import "./app.scss"
+
 import InputItem from "../InputItem/InputItem";
 import ItemList from "../ItemList/ItemList";
 import Footer from "../Footer/Footer";
@@ -22,12 +24,12 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<>
+			<div class="todo-wrap">
 				<h1>ToDo</h1>
 				<InputItem/>
 				<ItemList todoItem={todoItem}/>
 				<Footer count={todoItem.length}/>
-			</>
+			</div>
 		)
 	}
 }
