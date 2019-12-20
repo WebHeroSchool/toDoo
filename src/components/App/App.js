@@ -6,6 +6,7 @@ import Footer from "../Footer/Footer";
 
 import "./app.scss";
 
+const todoItem = ["дело 1", "2", "3", "4 дело","sdasad"];
 
 export default class App extends Component{
 
@@ -14,8 +15,8 @@ export default class App extends Component{
 				<>
 					<h1>ToDo</h1>
 					<InputItem/>
-					<ItemList/>
-					<Footer/>
+					<ItemList todoItem ={ todoItem }/>
+					<Footer count={todoItem.length}/>
 				</>
 			)
 		}
