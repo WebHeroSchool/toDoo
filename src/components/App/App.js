@@ -1,12 +1,11 @@
 import React, {Component} from 'react';
 
-import "./app.scss"
+import style from "./App.module.scss"
 
 import InputItem from "../InputItem/InputItem";
 import ItemList from "../ItemList/ItemList";
 import Footer from "../Footer/Footer";
 
-import "./app.scss";
 
 const todoItem = [
 	{
@@ -24,10 +23,10 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div class="todo-wrap">
+			<div  class={style.wrap}>
 				<h1>ToDo</h1>
 				<InputItem/>
-				<ItemList todoItem={todoItem}/>
+				<ItemList  todoItem={todoItem}/>
 				<Footer count={todoItem.length}/>
 			</div>
 		)
