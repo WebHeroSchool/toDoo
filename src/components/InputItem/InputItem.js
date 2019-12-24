@@ -1,8 +1,12 @@
 import React from 'react';
+import TextField from '@material-ui/core/TextField';
 
 const InputItem =()=>{
 	return(
-		<input type="text"/>
+		<TextField  label="task"
+		            id="outlined-size-normal"
+		            variant="outlined"
+		            size="small"/>
 	)
 }
 export default InputItem;

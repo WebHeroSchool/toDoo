@@ -9,15 +9,15 @@ import Footer from "../Footer/Footer";
 
 const todoItem = [
 	{
-		value: "дело 1",
+		value: "start project",
 		isDone: true
 	},
 	{
-		value: "дело 2",
+		value: "write book",
 		isDone: true
 	},
 	{
-		value: "дело 3",
+		value: "sleep nigth",
 		isDone: false
 
 	}
@@ -28,9 +28,9 @@ export default class App extends Component {
 	render() {
 		return (
 			<div  className={style.wrap}>
-				<h1>ToDo</h1>
+				<h1>Todo List</h1>
 				<InputItem/>
-				<ItemList  todoItem={todoItem}/>
+				<ItemList   todoItem={todoItem}/>
 				<Footer count={todoItem.length}/>
 			</div>
 		)
