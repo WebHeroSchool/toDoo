@@ -16,7 +16,7 @@ export default class Item extends Component{
 
 				})}>
 					<label className={style.label}>
-						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(id)}/>
+						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(isDone, id)}/>
 						{ value }
 						</label>
 					<button className={style.btn}>X</button>

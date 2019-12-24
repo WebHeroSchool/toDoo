@@ -28,7 +28,8 @@ export default class App extends Component {
 			}
 		]
 	};
-	onClickDone = (id) => {
+	onClickDone = (isDone,id) => {
+		console.log(isDone);
 		const newItems = this.state.todoItem.map(item=>{
 			const newItem = {...item};
 			if(newItem.id === id){
