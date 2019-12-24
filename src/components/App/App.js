@@ -7,10 +7,8 @@ import ItemList from "../ItemList/ItemList";
 import Footer from "../Footer/Footer";
 
 
-
-
 export default class App extends Component {
-	state={
+	state = {
 		todoItem: [
 			{
 				value: "start project",
@@ -27,12 +25,16 @@ export default class App extends Component {
 			}
 		]
 	};
+	onClickDone = (isDone, value) => {
+		console.log(isDone);
+	};
+
 	render() {
 		return (
-			<div  className={style.wrap}>
+			<div className={style.wrap}>
 				<h1>Todo List</h1>
 				<InputItem/>
-				<ItemList   todoItem={this.state.todoItem}/>
+				<ItemList onClickDone={this.onClickDone} todoItem={this.state.todoItem}/>
 				<Footer count={this.state.todoItem.length}/>
 			</div>
 		)
