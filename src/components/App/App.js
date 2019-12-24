@@ -12,21 +12,31 @@ export default class App extends Component {
 		todoItem: [
 			{
 				value: "start project",
-				isDone: true
+				isDone: true,
+				id:1
 			},
 			{
 				value: "write book",
-				isDone: true
+				isDone: true,
+				id:2
 			},
 			{
 				value: "sleep nigth",
-				isDone: false
+				isDone: false,
+				id:3
 
 			}
 		]
 	};
-	onClickDone = (isDone, value) => {
-		console.log(isDone);
+	onClickDone = (id) => {
+		const newItems = this.state.todoItem.map(item=>{
+			const newItem = {...item};
+			if(newItem.id === id){
+				newItem.isDone = !newItem.isDone;
+			}
+			return newItem
+		});
+		this.setState({todoItem: newItems})
 	};
 
 	render() {

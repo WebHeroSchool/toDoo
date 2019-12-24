@@ -7,7 +7,7 @@ import style from "./Item.module.scss"
 export default class Item extends Component{
 
 	render(){
-		const { value, isDone } = this.props.item;
+		const { value, isDone, id } = this.props.item;
 		return (
 			<>
 				<li className={classnames({
@@ -16,7 +16,7 @@ export default class Item extends Component{
 
 				})}>
 					<label className={style.label}>
-						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(isDone, value)}/>
+						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(id)}/>
 						{ value }
 						</label>
 					<button className={style.btn}>X</button>
