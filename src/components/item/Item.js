@@ -1,12 +1,24 @@
 import React, { Component } from 'react';
+import classnames from "classnames";
+
 import style from "./Item.module.scss"
+
+
 export default class Item extends Component{
 
 	render(){
-		const { item } = this.props;
+		const { value, isDone } = this.props.item;
+		console.log(this.props);
+		console.log(value);
 		return (
 			<>
-				<li className={style.item}>{ item }</li>
+				<li className={classnames({
+					[style.item]: true,
+					[style.done]: isDone,
+
+				})}>
+					{ value }
+				</li>
 			</>
 		)
 	}

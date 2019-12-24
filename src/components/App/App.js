@@ -9,13 +9,17 @@ import Footer from "../Footer/Footer";
 
 const todoItem = [
 	{
-		value: "дело 1"
+		value: "дело 1",
+		isDone: true
 	},
 	{
-		value: "дело 2"
+		value: "дело 2",
+		isDone: true
 	},
 	{
-		value: "дело 3"
+		value: "дело 3",
+		isDone: false
+
 	}
 ]
 
@@ -23,7 +27,7 @@ export default class App extends Component {
 
 	render() {
 		return (
-			<div  class={style.wrap}>
+			<div  className={style.wrap}>
 				<h1>ToDo</h1>
 				<InputItem/>
 				<ItemList  todoItem={todoItem}/>

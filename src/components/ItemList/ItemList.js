@@ -6,7 +6,7 @@ export default class ItemList extends Component {
 	render() {
 		const {todoItem} = this.props;
 		const items = todoItem.map((item, idx) => {
-			return (<Item  item={ item.value } key={ item.value } />)
+			return (<Item  item={ item } key={ item.value } />)
 		});
 		return items
 
