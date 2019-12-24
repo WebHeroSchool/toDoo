@@ -3,6 +3,13 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  width: 300px;
+  margin: 0 auto;
+  border: 1px solid #c2bebf;
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  padding: 2% 10%;
 }
 .list{
   display: flex;

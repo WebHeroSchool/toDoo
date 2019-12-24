@@ -3,9 +3,8 @@ import TextField from '@material-ui/core/TextField';
 
 const InputItem =()=>{
 	return(
-		<TextField  label="дело"
+		<TextField  label="task"
 		            id="outlined-size-normal"
-		            defaultValue="введите таск"
 		            variant="outlined"
 		            size="small"/>
 	)

@@ -17,7 +17,7 @@ export default class Item extends Component{
 					[style.done]: isDone,
 
 				})}>
-					{ value }
+					<span>{ value }</span><button className={style.btn}>X</button>
 				</li>
 			</>
 		)

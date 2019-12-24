@@ -1,10 +1,18 @@
+
 .item{
   font-size: 16px;
   padding: 5px;
   margin-bottom: 5px;
   list-style: none;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
 }
 .done{
-  text-decoration: line-through;
+  color: blue;
+}
+.btn{
+  margin: 5px 10px;
 }
