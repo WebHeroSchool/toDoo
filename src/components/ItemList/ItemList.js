@@ -4,9 +4,9 @@ import style from "./ItemList.module.scss"
 
 export default class ItemList extends Component {
 	render() {
-		const {todoItem} = this.props;
-		const items = todoItem.map((item, idx) => {
-			return (<Item  item={ item } key={ item.value } />)
+		const {todoItem , onClickDone} = this.props;
+		const items = todoItem.map((item) => {
+			return (<Item onClickDone={onClickDone} item={ item } key={ item.value } />)
 		});
 		return (
 			<div className={style.list}>

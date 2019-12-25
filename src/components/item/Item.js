@@ -7,9 +7,7 @@ import style from "./Item.module.scss"
 export default class Item extends Component{
 
 	render(){
-		const { value, isDone } = this.props.item;
-		console.log(this.props);
-		console.log(value);
+		const { value, isDone, id } = this.props.item;
 		return (
 			<>
 				<li className={classnames({
@@ -17,7 +15,11 @@ export default class Item extends Component{
 					[style.done]: isDone,
 
 				})}>
-					<span>{ value }</span><button className={style.btn}>X</button>
+					<label className={style.label}>
+						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(isDone, id)}/>
+						{ value }
+						</label>
+					<button className={style.btn}>X</button>
 				</li>
 			</>
 		)
