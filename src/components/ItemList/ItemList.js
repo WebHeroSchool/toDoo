@@ -4,9 +4,13 @@ import style from "./ItemList.module.scss"
 
 export default class ItemList extends Component {
 	render() {
-		const {todoItem , onClickDone} = this.props;
+		const {todoItem , onClickDone, onClickDelete} = this.props;
 		const items = todoItem.map((item) => {
-			return (<Item onClickDone={onClickDone} item={ item } key={ item.value } />)
+			return (<Item
+				onClickDone={onClickDone}
+				onClickDelete={onClickDelete}
+				item={ item }
+				key={ item.value } />)
 		});
 		return (
 			<div className={style.list}>
