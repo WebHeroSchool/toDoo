@@ -25,8 +25,10 @@ export default class App extends Component {
 				isDone: false,
 				id:3
 
-			}
-		]
+			},
+
+		],
+		count: 3
 	};
 	onClickDone = (isDone,id) => {
 		const newItems = this.state.todoItem.map(item=>{
@@ -43,12 +45,24 @@ export default class App extends Component {
 		const newItems = this.state.todoItem.filter(item=> item.id !== id);
 		this.setState({todoItem: newItems})
 	};
+	onClickAdd=(value)=>this.setState(state=>({
+		todoItem: [
+			...state.todoItem,
+			{
+				value,
+				isDone: false,
+				id:state.count+1
+			}
+
+		],
+		count: state.count+1
+	}));
 
 	render() {
 		return (
 			<div className={style.wrap}>
 				<h1>Todo List</h1>
-				<InputItem/>
+				<InputItem onClickAdd ={this.onClickAdd}/>
 				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={this.state.todoItem}/>
 				<Footer count={this.state.todoItem.length}/>
 			</div>

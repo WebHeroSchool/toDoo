@@ -1,0 +1,26 @@
+.wrap{
+  display: flex;
+  position: relative;
+  margin-bottom: 20px;
+  input{
+    width: 250px;
+    padding: 10px;
+  }
+  button{
+    padding: 10px;
+  }
+  &.error{
+    input{
+      border: 1px solid red;
+    }
+    .text{
+      display: inline-block;
+    }
+  }
+}
+.text{
+  display: none;
+  position: absolute;
+  top: 20px;
+  left:0;
+}

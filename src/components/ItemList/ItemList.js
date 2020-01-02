@@ -10,7 +10,7 @@ export default class ItemList extends Component {
 				onClickDone={onClickDone}
 				onClickDelete={onClickDelete}
 				item={ item }
-				key={ item.value } />)
+				key={ item.id } />)
 		});
 		return (
 			<div className={style.list}>
