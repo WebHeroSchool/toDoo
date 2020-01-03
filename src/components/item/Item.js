@@ -16,10 +16,13 @@ export default class Item extends Component{
 
 				})}>
 					<label className={style.label}>
-						<input  type="checkbox" checked={isDone} onChange={()=>this.props.onClickDone(isDone, id)}/>
+						<input  type="checkbox"
+						        checked={isDone}
+						        onChange={()=>this.props.onClickDone(isDone, id)}
+						/>
 						{ value }
 						</label>
-					<button className={style.btn}>X</button>
+					<button onClick={()=>{this.props.onClickDelete(id)}} className={style.btn}>X</button>
 				</li>
 			</>
 		)
