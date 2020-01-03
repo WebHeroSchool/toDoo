@@ -31,7 +31,7 @@ export default class InputItem extends React.Component{
 			inputValue: e.target.value.toUpperCase(),
 			error: false
 		})
-	}
+	};
 	render(){
 		const { error } = this.state;
 		console.log(error);

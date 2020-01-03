@@ -43,7 +43,10 @@ export default class App extends Component {
 
 	onClickDelete=(id)=>{
 		const newItems = this.state.todoItem.filter(item=> item.id !== id);
-		this.setState({todoItem: newItems})
+		this.setState({
+			todoItem: newItems,
+			count:this.state.count - 1
+		})
 	};
 	onClickAdd=(value)=>this.setState(state=>({
 		todoItem: [
@@ -64,7 +67,7 @@ export default class App extends Component {
 				<h1>Todo List</h1>
 				<InputItem onClickAdd ={this.onClickAdd}/>
 				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={this.state.todoItem}/>
-				<Footer count={this.state.todoItem.length}/>
+				<Footer count={this.state.count}/>
 			</div>
 		)
 	}

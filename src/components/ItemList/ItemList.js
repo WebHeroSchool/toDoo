@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import Item from "../item/Item";
 import style from "./ItemList.module.scss"
 
+
 export default class ItemList extends Component {
 	render() {
 		const {todoItem , onClickDone, onClickDelete} = this.props;
@@ -21,3 +22,13 @@ export default class ItemList extends Component {
 
 	}
 }
+
+ItemList.defaultProps = {
+	todoItem: [
+		{
+			value: "сдесь может быть ваше дело",
+			isDone: false,
+			id:1
+		}
+	]
+};
