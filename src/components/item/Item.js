@@ -6,6 +6,15 @@ import PropTypes from "prop-types";
 
 
 export default class Item extends Component {
+	componentDidMount() {
+		console.log("mounting");
+	}
+	componentDidUpdate(prevProps, prevState, snapshot) {
+		console.log("componentDidUpdate");
+	}
+	componentWillUnmount() {
+		console.log("componentWillUnmount");
+	}
 
 	render() {
 		const {value, isDone, id} = this.props;
