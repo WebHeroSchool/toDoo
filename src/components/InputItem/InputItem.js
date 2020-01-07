@@ -1,8 +1,7 @@
 import React from 'react';
-// import TextField from '@material-ui/core/TextField';
 import classnames from "classnames";
-
 import style from "./InputItem.module.scss";
+import PropTypes from 'prop-types';
 
 export default class InputItem extends React.Component{
 	state = {
@@ -34,8 +33,7 @@ export default class InputItem extends React.Component{
 	};
 	render(){
 		const { error } = this.state;
-		console.log(error);
-		console.log(style.error);
+
 		return(
 			<>
 			<div className={classnames({
@@ -53,4 +51,11 @@ export default class InputItem extends React.Component{
 			</>
 		)
 	}
+}
+InputItem.propTypes = {
+	inputValue:PropTypes.oneOfType([
+		PropTypes.string.isRequired,
+		PropTypes.number.isRequired
+	]),
+	onClickAdd: PropTypes.func.isRequired,
 }

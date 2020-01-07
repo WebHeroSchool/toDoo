@@ -1,6 +1,6 @@
 import React from 'react';
 import style from "./Footer.module.scss"
-
+import PropTypes from 'prop-types';
 const Footer =({ count })=>{
 	return(
 		<div className={style.wrap}>
@@ -14,5 +14,8 @@ const Footer =({ count })=>{
 }
 Footer.defaultProps = {
 	count: 0
+};
+Footer.propTypes = {
+	count: PropTypes.number.isRequired
 };
 export default Footer;
