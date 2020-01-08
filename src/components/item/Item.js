@@ -7,13 +7,11 @@ import PropTypes from "prop-types";
 
 export default class Item extends Component {
 	componentDidMount() {
-		console.log("mounting");
+		this.intreval = setInterval(()=>console.log("interval"), 1000)
 	}
-	componentDidUpdate(prevProps, prevState, snapshot) {
-		console.log("componentDidUpdate");
-	}
+
 	componentWillUnmount() {
-		console.log("componentWillUnmount");
+		clearInterval(this.intreval)
 	}
 
 	render() {
