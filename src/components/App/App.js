@@ -1,75 +1,29 @@
 import React, {Component} from 'react';
-
-import style from "./App.module.scss"
-
-import InputItem from "../InputItem/InputItem";
-import ItemList from "../ItemList/ItemList";
-import Footer from "../Footer/Footer";
-
+import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import Todo from "../Todo/TodoItem";
+import About from "../About/About";
+import Contacts from "../Contacts/Contacts";
+import styles from "./App.module.scss"
+import style from "../Todo/TodoItem.module.scss";
 
 
 export default class App extends Component {
-	state = {
-		todoItem: [
-			{
-				value: "start project",
-				isDone: true,
-				id:1
-			},
-			{
-				value: "write book",
-				isDone: true,
-				id:2
-			},
-			{
-				value: "sleep nigth",
-				isDone: false,
-				id:3
 
-			},
+		render() {
+			return (
+				<Router>
+					<nav className={styles.nav}>
+						<Link to='/' exact >Обо мне</Link>
+						<Link to='/todo'>Дела</Link>
+						<Link to='/contacts'>Контакты</Link>
+					</nav>
+					<div className={style.wrap}>
+						<Route path='/' exact component={About} />
+						<Route path='/todo' component={Todo} />
+						<Route path='/contacts' component={Contacts} />
+					</div>
 
-		],
-		count: 3
-	};
-	onClickDone = (isDone,id) => {
-		const newItems = this.state.todoItem.map(item=>{
-			const newItem = {...item};
-			if(newItem.id === id){
-				newItem.isDone = !newItem.isDone;
-			}
-			return newItem
-		});
-		this.setState({todoItem: newItems})
-	};
-
-	onClickDelete=(id)=>{
-		const newItems = this.state.todoItem.filter(item=> item.id !== id);
-		this.setState({
-			todoItem: newItems,
-			count:this.state.count - 1
-		})
-	};
-	onClickAdd=(value)=>this.setState(state=>({
-		todoItem: [
-			...state.todoItem,
-			{
-				value,
-				isDone: false,
-				id:state.count+1
-			}
-
-		],
-		count: state.count+1
-	}));
-
-	render() {
-		return (
-			<div className={style.wrap}>
-				<h1>Todo List</h1>
-				<InputItem onClickAdd ={this.onClickAdd}/>
-				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={this.state.todoItem}/>
-				<Footer count={this.state.count}/>
-			</div>
-		)
-	}
+				</Router>
+			)
+		}
 }
