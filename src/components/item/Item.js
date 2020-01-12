@@ -7,11 +7,11 @@ import PropTypes from "prop-types";
 
 export default class Item extends Component {
 	componentDidMount() {
-		this.intreval = setInterval(()=>console.log("interval"), 1000)
+		// this.intreval = setInterval(()=>console.log("interval"), 1000)
 	}
 
 	componentWillUnmount() {
-		clearInterval(this.intreval)
+		// clearInterval(this.intreval)
 	}
 
 	render() {
