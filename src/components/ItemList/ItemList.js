@@ -1,25 +1,28 @@
 import React, {Component} from 'react';
 import Item from "../item/Item";
 import style from "./ItemList.module.scss"
+import PropTypes from "prop-types";
+
 
 
 export default class ItemList extends Component {
 	render() {
 		const {todoItem , onClickDone, onClickDelete} = this.props;
 		const items = todoItem.map((item) => {
-			return (<Item
+			return (
+				<Item
+				{...item}
 				onClickDone={onClickDone}
 				onClickDelete={onClickDelete}
-				item={ item }
-				key={ item.id } />)
+				key={ item.id }
+				/>
+				)
 		});
 		return (
 			<div className={style.list}>
 				{ items }
 			</div>
-
 		)
-
 	}
 }
 
@@ -32,3 +35,6 @@ ItemList.defaultProps = {
 		}
 	]
 };
+ItemList.propTypes = {
+	todoItem: PropTypes.array.isRequired,
+}
