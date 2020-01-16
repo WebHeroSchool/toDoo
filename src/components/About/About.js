@@ -3,20 +3,43 @@ import React, {Component} from 'react';
 import Progres from "@material-ui/core/CircularProgress";
 import CardContent from "@material-ui/core/CardContent";
 import Octokit from "@octokit/rest"
+import style from "./About.module.scss"
+import AboutHeader from "../AboutHeader/AboutHeader";
+import AboutRepo from "../AboutRepo/AboutRepo";
+import errImg from "../../icons/error.png"
+
 const octokit = new Octokit();
+
 
 class About extends Component {
 	state = {
 		isLoading: true,
 		repoList:[],
-		err: "",
-		url:"",
-		name:""
+		err: false,
+		userData: {},
+		count: 0
 	};
 
 	componentDidMount() {
+		const user = "serger777";
+		octokit.users
+			.getByUsername({
+				username: user
+			})
+			.then(({ data }) => {
+				this.setState({
+					userData: data,
+					isLoading: false
+				});
+			})
+			.catch(err =>{
+				this.setState({
+					err: "ошибка загрузки"
+				})
+			});
+
 		octokit.repos.listForUser({
-			username: "serger777"
+			username: user
 		}).then(({ data })=>{
 			this.setState({
 				isLoading: false,
@@ -24,29 +47,63 @@ class About extends Component {
 				url: data[0].owner.avatar_url,
 				name: data[0].owner.login
 			})
+			if(!data){
+				throw new Error("нет репозиториев")
+			}
 		}).catch((err)=>{
 			console.log(err);
 			this.setState({
-				err: "ошибка загрузки"
+				err: "Что-то пошло не так..."
 			})
 		})
 	}
-
+	filterRepo =(count, repoList)=>{
+		if(count < 0 ){
+			count = repoList.length - 5;
+			this.setState({
+				count: repoList.length - 5
+			})
+		}
+		if(count > repoList.length ){
+			count = 0;
+			this.setState({
+				count: 0
+			})
+		}
+		const result =	repoList.filter((item,idx)=>{
+			if(idx < count+5 && idx >= count){
+				return item
+			}
+		});
+		return result
+	};
+	changeCountUp =()=>{
+		this.setState(state=>({
+			count: state.count+5
+		})
+		)
+	};
+	changeCountDown =()=>{
+		this.setState(state=>({
+				count: state.count-5
+			})
+		)
+	};
 	render() {
-		const {isLoading, repoList,err, name, url} = this.state;
+		const {isLoading, repoList,err, userData, count} = this.state;
 		return (
 			<CardContent>
-				{!isLoading && <><p>USER:</p><a href={url}>{name}</a></>}
-				<h1>{isLoading ? <Progres/> : "Репозитории"}</h1>
-
-				{ !isLoading && <ol>
-					{repoList.map(item => (
-						<li key={item.id}>
-							<a href={item.html_url}>{item.name}</a>
-						</li>
-					))
-					}</ol>}
-				<div>{ err }</div>
+				{!isLoading && <AboutHeader userData={userData}/>}
+				{!err && (isLoading ? <Progres color={"secondary"} variant={"indeterminate"}/> : <h1>Мои репозитории</h1>)}
+				{ !isLoading && <AboutRepo repoList={this.filterRepo(count, repoList)}/>}
+				{ !isLoading && <div className={style.wrap_btn}>
+					<button disabled={count < 5  } onClick={this.changeCountDown}>Назад</button>
+					<button disabled={ count > repoList.length - 6 } onClick={this.changeCountUp}>Вперед</button>
+				</div>}
+				{err && <div className={style.error}>
+					<img src={errImg} alt=""/>
+					{ err }
+				</div> }
 			</CardContent>
 		)
 	}

@@ -3,18 +3,25 @@
   position: relative;
   margin-bottom: 20px;
   input{
-    width: 250px;
+    width: 240px;
     padding: 10px;
+    border-radius: 5px 0 0 5px;
   }
   button{
     padding: 10px;
+    border-radius: 0 5px 5px 0;
+    background: #356EFF;
+    color: white;
   }
   &.error{
     input{
-      border: 1px solid red;
+      border: 1px solid #ff5246;
     }
     .text{
       display: inline-block;
+      color: #ff5246;
+      font-size: 12px;
+      margin: 20px 0;
     }
   }
 }

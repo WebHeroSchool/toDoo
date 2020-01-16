@@ -17,7 +17,7 @@ export default class Item extends Component {
 	render() {
 		const {value, isDone, id} = this.props;
 		return (
-			<>
+			<div className={style.wrap}>
 				<li className={classnames({
 					[style.item]: true,
 					[style.done]: isDone,
@@ -28,14 +28,15 @@ export default class Item extends Component {
 						       checked={isDone}
 						       onChange={() => this.props.onClickDone(isDone, id)}
 						/>
-						{value}
+						<span>{value}</span>
 					</label>
 					<button onClick={() => {
 						this.props.onClickDelete(id)
-					}} className={style.btn}>X
+					}} className={style.btn}>&#10006;
 					</button>
 				</li>
-			</>
+
+			</div>
 		)
 	}
 

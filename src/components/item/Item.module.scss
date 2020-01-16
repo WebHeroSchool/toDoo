@@ -1,21 +1,34 @@
 .item{
   font-size: 16px;
-  padding: 5px;
   margin-bottom: 5px;
   list-style: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 100%;
+  width: 290px;
+  border: 1px solid #CCCCCC;
+  border-radius: 5px;
+  &:hover{
+    border: 1px solid #356EFF
+  }
 }
 .done{
-  color: blue;
+  color: #CCC;
+  span{
+    text-decoration: line-through;
+  }
 }
 .btn{
-  margin: 5px 10px;
+  margin: 10px;
   cursor: pointer;
+  border-radius: 50%;
+  line-height: 18px;
+  border: 1px solid black;
 }
 .label{
   cursor: pointer;
+  width: 100%;
+  padding: 10px 0;
+  margin: 5px;
 }

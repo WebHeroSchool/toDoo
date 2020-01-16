@@ -28,7 +28,9 @@ export default class App extends Component {
 			},
 
 		],
-		count: 3
+		filter:"all",
+		count: 3,
+		todo:""
 	};
 	onClickDone = (isDone,id) => {
 		const newItems = this.state.todoItem.map(item=>{
@@ -60,14 +62,32 @@ export default class App extends Component {
 		],
 		count: state.count+1
 	}));
-
+	filterItems =(items, filter) =>{
+		if (filter === 'all') {
+			return items;
+		} else if (filter === 'active') {
+			return items.filter((item) => (!item.isDone));
+		} else if (filter === 'done') {
+			return items.filter((item) => item.isDone);
+		}
+	};
+	onFilterChange = (filter) => {
+		this.setState({ filter });
+	};
+	searchItem=(todoItem)=>{
+		let res = todoItem.filter(item=>!item.isDone)
+		return res.length
+	}
 	render() {
+		const {filter, todoItem} = this.state;
+		const visibleItems = this.filterItems(todoItem, filter);
+		let activeItem = this.searchItem(todoItem);
 		return (
 				<>
 				<h1>Todo List</h1>
-				<InputItem onClickAdd ={this.onClickAdd}/>
-				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={this.state.todoItem}/>
-				<Footer count={this.state.count}/>
+				<InputItem todoItem={this.state.todoItem} onClickAdd ={this.onClickAdd}/>
+				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={visibleItems}/>
+				<Footer todo={activeItem} onFilterChange={this.onFilterChange}  filter={filter} count={this.state.count}/>
 				</>
 		)
 	}

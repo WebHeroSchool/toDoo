@@ -1,24 +1,15 @@
 .nav{
   display: flex;
   justify-content: center;
-a{
-  font-size: 20px;
-  font-weight: bold;
-  text-decoration: none;
-  color: black;
-  padding: 20px;
+  a{
+    font-size: 20px;
+    font-weight: bold;
+    text-decoration: none;
+    color: black;
+    padding: 10px;
+  }
+  .active{
+    border: 1px solid black;
+  }
 }
-}
-.wrap {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  width: 300px;
-  margin: 0 auto;
-  border: 1px solid #c2bebf;
-  -webkit-border-radius: 5px;
-  -moz-border-radius: 5px;
-  border-radius: 5px;
-  padding: 2% 10%;
-}
+
