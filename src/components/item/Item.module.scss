@@ -1,14 +1,20 @@
+
 .item{
   font-size: 16px;
-  margin-bottom: 5px;
+  margin-bottom: 18px;
   list-style: none;
   cursor: pointer;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 290px;
+  width: 100%;
   border: 1px solid #CCCCCC;
-  border-radius: 5px;
+  border-radius: 41px;
+  padding: 0 10px;
+  box-sizing: border-box;
+  @media (max-width: 768px) {
+    width: 290px;
+  }
   &:hover{
     border: 1px solid #356EFF
   }
@@ -19,12 +25,43 @@
     text-decoration: line-through;
   }
 }
+  .input{
+    display: none;
+  }
+  .value{
+    padding-left: 30px;
+    position: relative;
+    &:before{
+      content: "";
+      left: 0;
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      display: inline-block;
+      border-radius: 50%;
+      border: 1px solid #356EFF;
+    }
+  }
+  input:checked~.value{
+    &:before{
+      background: #356EFF;
+    }
+    &:after{
+      content: "\2713";
+      color: white;
+      font-size: 12px;
+      left: 5px;
+      padding: 1px 0;
+      position: absolute;
+    }
+  }
 .btn{
-  margin: 10px;
   cursor: pointer;
   border-radius: 50%;
   line-height: 18px;
-  border: 1px solid black;
+  color: white;
+  border: 1px solid #CCCCCC;
+  background: #CCCCCC;
 }
 .label{
   cursor: pointer;

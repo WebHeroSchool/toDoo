@@ -4,34 +4,38 @@ import React, {Component} from 'react';
 import InputItem from "../InputItem/InputItem";
 import ItemList from "../ItemList/ItemList";
 import Footer from "../Footer/Footer";
+import style from "../About/About.module.scss";
+import errImg from "../../icons/error.png";
 
 
 
 export default class App extends Component {
 	state = {
 		todoItem: [
-			{
-				value: "start project",
-				isDone: true,
-				id:1
-			},
-			{
-				value: "write book",
-				isDone: true,
-				id:2
-			},
-			{
-				value: "sleep nigth",
-				isDone: false,
-				id:3
-
-			},
+			// {
+			// 	value: "start project",
+			// 	isDone: true,
+			// 	id:1
+			// },
+			// {
+			// 	value: "write book",
+			// 	isDone: true,
+			// 	id:2
+			// },
+			// {
+			// 	value: "sleep nigth",
+			// 	isDone: false,
+			// 	id:3
+			//
+			// },
 
 		],
 		filter:"all",
-		count: 3,
+		count: 0,
 		todo:""
 	};
+
+
 	onClickDone = (isDone,id) => {
 		const newItems = this.state.todoItem.map(item=>{
 			const newItem = {...item};
@@ -84,10 +88,13 @@ export default class App extends Component {
 		let activeItem = this.searchItem(todoItem);
 		return (
 				<>
-				<h1>Todo List</h1>
-				<InputItem todoItem={this.state.todoItem} onClickAdd ={this.onClickAdd}/>
-				<ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={visibleItems}/>
 				<Footer todo={activeItem} onFilterChange={this.onFilterChange}  filter={filter} count={this.state.count}/>
+					{!todoItem.length && <div className={style.error}>
+						<img src={errImg} alt=""/>
+						Вы ещё не добавили ни одной задачи
+					</div>}
+				 <ItemList onClickDelete={this.onClickDelete} onClickDone={this.onClickDone} todoItem={visibleItems}/>
+				<InputItem todoItem={this.state.todoItem} onClickAdd ={this.onClickAdd}/>
 				</>
 		)
 	}

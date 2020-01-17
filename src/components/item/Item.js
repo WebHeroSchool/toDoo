@@ -17,26 +17,24 @@ export default class Item extends Component {
 	render() {
 		const {value, isDone, id} = this.props;
 		return (
-			<div className={style.wrap}>
 				<li className={classnames({
 					[style.item]: true,
 					[style.done]: isDone,
 
 				})}>
 					<label className={style.label}>
-						<input type="checkbox"
+						<input className={style.input}
+							   type="checkbox"
 						       checked={isDone}
 						       onChange={() => this.props.onClickDone(isDone, id)}
 						/>
-						<span>{value}</span>
+						<span className={style.value}>{value}</span>
 					</label>
 					<button onClick={() => {
 						this.props.onClickDelete(id)
 					}} className={style.btn}>&#10006;
 					</button>
 				</li>
-
-			</div>
 		)
 	}
 

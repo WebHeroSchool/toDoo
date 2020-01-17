@@ -20,11 +20,11 @@ export default class AboutHeader extends Component{
 					<p className={style.text}>{userData.bio}</p>
 					<p className={style.text}><img src={iconMail} alt=""/> <span>serger777@gmail.com</span></p>
 					<p className={style.text}><img src={iconPhone} alt=""/> <span>8910-660-45-46</span></p>
-					<div className={style.bottom}>
-						<a href="https://www.linkedin.com/in/sergey-gerasimov-803438185/"><img src={iconLinkid} alt=""/></a>
-						<a href="https://github.com/serger777"><img src={iconGithub} alt=""/></a>
-						<a href="https://vk.com/gerasimovs"><img src={iconVk} alt=""/></a>
-					</div>
+				</div>
+				<div className={style.bottom}>
+					<a href="https://www.linkedin.com/in/sergey-gerasimov-803438185/"><img src={iconLinkid} alt=""/></a>
+					<a href="https://github.com/serger777"><img src={iconGithub} alt=""/></a>
+					<a href="https://vk.com/gerasimovs"><img src={iconVk} alt=""/></a>
 				</div>
 			</div>
 		)

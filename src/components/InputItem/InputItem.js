@@ -46,11 +46,13 @@ export default class InputItem extends React.Component{
 				[style.error]: error,
 
 			}) }>
-				<input
-				            value={this.state.inputValue}
-				            onChange={(e)=>this.onChangeInput(e)}
-				/>
-				<button  className={error ? style.error : ""} onClick={this.onButtonClick}>Add</button>
+				<div className={style.wrap_input}>
+					<input
+						value={this.state.inputValue}
+						onChange={(e)=>this.onChangeInput(e)}
+					/>
+					<button  className={error ? style.error : ""} onClick={this.onButtonClick}><span>+</span></button>
+				</div>
 				<p className={style.text}> {errorText}</p>
 			</div>
 
