@@ -11,12 +11,12 @@ export default class App extends Component {
 			return (
 				<Router>
 					<nav className={styles.nav}>
-						<NavLink activeClassName={styles.active} to='./' exact >Обо мне</NavLink>
-						<NavLink activeClassName={styles.active} to='./todo'>Дела</NavLink>
+						<NavLink activeClassName={styles.active} to='/reactTodo/' exact >Обо мне</NavLink>
+						<NavLink activeClassName={styles.active} to='/reactTodo/todo'>Дела</NavLink>
 					</nav>
 					<div className={styles.wrap}>
-						<Route path='./' exact component={About} />
-						<Route path='./todo' component={Todo} />
+						<Route path='/reactTodo/' exact component={About} />
+						<Route path='/reactTodo/todo' component={Todo} />
 						<div className={styles.powered}>Сделано в WHS</div>
 					</div>
 				</Router>
