@@ -25,3 +25,26 @@ button:active,button:focus {
 body{
   font-family: 'Roboto', sans-serif;
 }
+.powered{
+  position: absolute;
+  right: -20px;
+  bottom: -20px;
+  font-size: 10px;
+}
+.wrap {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  width: 700px;
+  padding: 32px;
+  position: relative;
+  @media(max-width: 768px){
+    width: 100%;
+  }
+}
+.list{
+  display: flex;
+  flex-direction: column;
+}
