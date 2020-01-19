@@ -11,27 +11,9 @@ import errImg from "../../icons/error.png";
 
 export default class App extends Component {
 	state = {
-		todoItem: [
-			// {
-			// 	value: "start project",
-			// 	isDone: true,
-			// 	id:1
-			// },
-			// {
-			// 	value: "write book",
-			// 	isDone: true,
-			// 	id:2
-			// },
-			// {
-			// 	value: "sleep nigth",
-			// 	isDone: false,
-			// 	id:3
-			//
-			// },
-
-		],
+		todoItem: JSON.parse(localStorage.getItem('todoItem')) || [],
 		filter:"all",
-		count: 0,
+		count:  JSON.parse(localStorage.getItem('count')) || 0,
 		todo:""
 	};
 
@@ -79,11 +61,21 @@ export default class App extends Component {
 		this.setState({ filter });
 	};
 	searchItem=(todoItem)=>{
-		let res = todoItem.filter(item=>!item.isDone)
+		let res = todoItem.filter(item=>!item.isDone);
 		return res.length
 	}
 	render() {
-		const {filter, todoItem} = this.state;
+		const {filter, todoItem,count} = this.state;
+
+		const addItemToLocalStorage=(item,count)=>{
+			let sItem = JSON.stringify(item);
+			 console.log(sItem);
+			localStorage.setItem("todoItem",sItem);
+			localStorage.setItem("count",JSON.stringify(count));
+		};
+		addItemToLocalStorage(todoItem,count);
+
+		console.log(todoItem);
 		const visibleItems = this.filterItems(todoItem, filter);
 		let activeItem = this.searchItem(todoItem);
 		return (

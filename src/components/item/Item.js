@@ -6,14 +6,6 @@ import PropTypes from "prop-types";
 
 
 export default class Item extends Component {
-	componentDidMount() {
-		// this.intreval = setInterval(()=>console.log("interval"), 1000)
-	}
-
-	componentWillUnmount() {
-		// clearInterval(this.intreval)
-	}
-
 	render() {
 		const {value, isDone, id} = this.props;
 		return (

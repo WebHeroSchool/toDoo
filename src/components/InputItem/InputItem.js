@@ -28,6 +28,9 @@ export default class InputItem extends React.Component{
 			});
 			onClickAdd(this.state.inputValue)
 		}
+		this.setState({
+			inputValue: ""
+		});
 	};
 	onChangeInput=(e)=>{
 

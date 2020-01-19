@@ -17,7 +17,10 @@ class About extends Component {
 		repoList:[],
 		err: false,
 		userData: {},
-		count: 0
+		countPage: 0,
+		currentPage:1,
+		count: 0,
+
 	};
 
 	componentDidMount() {
@@ -41,11 +44,13 @@ class About extends Component {
 		octokit.repos.listForUser({
 			username: user
 		}).then(({ data })=>{
+
 			this.setState({
 				isLoading: false,
 				repoList:data,
 				url: data[0].owner.avatar_url,
-				name: data[0].owner.login
+				name: data[0].owner.login,
+				countPage: data.length/5,
 			})
 			if(!data){
 				throw new Error("нет репозиториев")
@@ -79,18 +84,33 @@ class About extends Component {
 	};
 	changeCountUp =()=>{
 		this.setState(state=>({
-			count: state.count+5
+			count: state.count+5,
+			currentPage: state.currentPage+1,
 		})
 		)
 	};
 	changeCountDown =()=>{
 		this.setState(state=>({
-				count: state.count-5
+				count: state.count-5,
+				currentPage: state.currentPage-1,
 			})
 		)
 	};
+
 	render() {
-		const {isLoading, repoList,err, userData, count} = this.state;
+		const {isLoading, repoList,err, userData, count,countPage,currentPage} = this.state;
+		const CountPage = () =>{
+			let  arr =[];
+			 for(let i=1; i< countPage+1; i++){
+			 	arr.push(i)
+			}
+				return(
+					arr.map(item=>{
+						return <span key={item} className={currentPage === item? style.active : ""}>{item}</span>
+					})
+					)
+
+		};
 		return (
 			<CardContent>
 				{!isLoading && <AboutHeader userData={userData}/>}
@@ -98,6 +118,7 @@ class About extends Component {
 				{ !isLoading && <AboutRepo repoList={this.filterRepo(count, repoList)}/>}
 				{ !isLoading && <div className={style.wrap_btn}>
 					<button disabled={count < 5  } onClick={this.changeCountDown}>Назад</button>
+						<CountPage />
 					<button disabled={ count > repoList.length - 6 } onClick={this.changeCountUp}>Вперед</button>
 				</div>}
 				{err && <div className={style.error}>
