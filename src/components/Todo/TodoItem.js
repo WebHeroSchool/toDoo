@@ -62,20 +62,17 @@ export default class App extends Component {
 	};
 	searchItem=(todoItem)=>{
 		let res = todoItem.filter(item=>!item.isDone);
-		return res.length
-	}
+		return res.length;
+	};
 	render() {
 		const {filter, todoItem,count} = this.state;
 
 		const addItemToLocalStorage=(item,count)=>{
 			let sItem = JSON.stringify(item);
-			 console.log(sItem);
 			localStorage.setItem("todoItem",sItem);
 			localStorage.setItem("count",JSON.stringify(count));
 		};
 		addItemToLocalStorage(todoItem,count);
-
-		console.log(todoItem);
 		const visibleItems = this.filterItems(todoItem, filter);
 		let activeItem = this.searchItem(todoItem);
 		return (
